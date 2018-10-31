@@ -16,12 +16,18 @@ const handleSignin = (db, bcrypt) => (req, res) => {
           .then(user => {
             res.json(user[0]);
           })
-          .catch(err => res.status(400).json('Unable to get user'));
+          .catch(err => {
+            console.log(err);
+            res.status(400).json('Unable to get user');
+          });
       } else {
         res.status(400).json('Wrong credentials');
       }
     })
-    .catch(err => res.status(400).json('Wrong credentials'));
+    .catch(err => {
+      console.log(err);
+      res.status(400).json('Wrong credentials');
+    });
 };
 
 module.exports = {

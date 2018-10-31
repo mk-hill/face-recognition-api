@@ -10,7 +10,10 @@ const handleProfileGet = db => (req, res) => {
         res.status(404).json('Not found');
       }
     })
-    .catch(err => res.status(400).json('Error getting user'));
+    .catch(err => {
+      console.log(err);
+      res.status(400).json('Error getting user');
+    });
 };
 
 module.exports = {
